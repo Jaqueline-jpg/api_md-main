@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage>{
   var _fragmentIndex = 0;
+  final _listaCidadeKey = GlobalKey<CidadeFragmentState>();
 
   Widget build(BuildContext context){
     return Scaffold(
@@ -24,11 +25,11 @@ class _HomePageState extends State<HomePage>{
         currentIndex: _fragmentIndex,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+            icon: Icon(Icons.search),
             label: CepFragment.title,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.list),
+            icon: Icon(Icons.list),
             label: CidadeFragment.title,
           )
         ],
@@ -40,10 +41,22 @@ class _HomePageState extends State<HomePage>{
           }
         },
       ),
+      floatingActionButton: _buildFloatingButton(),
     );
   }
 
   Widget _buildBody() => _fragmentIndex == 0 ? CepFragment() :
   CidadeFragment();
+
+  Widget? _buildFloatingButton() {
+    if(_fragmentIndex == 0){
+      return null;
+    }
+    return FloatingActionButton(
+      onPressed: () {},
+      child: const Icon(Icons.add),
+      tooltip: 'Cadastrar nova Cidade',
+    );
+  }
 
 }

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'cep_model.g.dart';
+import 'cep_model.g.dart';
 
 @JsonSerializable()
 class Cep {
